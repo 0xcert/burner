@@ -1,0 +1,42 @@
+{
+  "name": "0xcert-burner",
+  "version": "1.0.0",
+  "description": "ZXC tokens burning mechanism",
+  "author": "David Licen, Tadej Vengust",
+  "repository": "https://github.com/0xcert/burner",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore . --fix"
+  },
+  "dependencies": {
+    "@0xcert/ethereum-metamask-provider": "^2.0.0-beta4",
+    "@0xcert/ethereum-value-ledger": "^2.0.0-beta4",
+    "@nuxtjs/axios": "^5.9.5",
+    "@nuxtjs/toast": "^3.3.0",
+    "nuxt": "^2.11.0",
+    "vee-validate": "^3.2.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^2.0.2",
+    "@nuxtjs/eslint-module": "^1.1.0",
+    "@nuxtjs/google-analytics": "^2.2.3",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/stylelint-module": "^3.2.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-nuxt": ">=0.5.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "sass-resources-loader": "^2.0.1",
+    "stylelint": "^13.2.0",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.14.2"
+  }
+}

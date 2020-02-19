@@ -1,0 +1,90 @@
+// Breakpoints
+
+@mixin breakpoint($point) {
+  @if $point=='wide' {
+    @media (min-width: 120em) {
+      @content ;
+    }
+  }
+
+  @if $point==large {
+    @media (min-width: 84em) {
+      @content ;
+    }
+  }
+
+  @if $point==desktop {
+    @media (min-width: 65em) {
+      @content ;
+    }
+  }
+
+  @else if $point==medium {
+    @media (min-width: 50em) {
+      @content ;
+    }
+  }
+
+  @else if $point==small down {
+    @media (max-width: 50em) {
+      @content ;
+    }
+  }
+}
+
+$sides: (
+  '': '',
+  't': 'top',
+  'b': 'bottom',
+  'l': 'left',
+  'r': 'right',
+);
+
+$breakpoints: (
+  '': '',
+  'xs': 576px,
+  'sm': 50em,
+  'md': 50em,
+  'lg': 84em,
+);
+
+@each $breakName, $breakValue in $breakpoints {
+  @each $sideName, $sideValue in $sides {
+    @for $i from 0 through 10 {
+
+      $property: if($sideName == '', '', -#{$sideValue});
+      $space: $i;
+      $selector: '';
+
+      @if $breakName != '' {
+        $selector: #{$sideName}-#{$breakName}-#{$i};
+      }
+
+      @else {
+        $selector: #{$sideName}-#{$i};
+      }
+
+      @if $breakName != '' {
+        @media (min-width: $breakValue) {
+          .m#{$selector} {
+            margin#{$property}: #{$space}rem;
+          }
+
+          .p#{$selector} {
+            padding#{$property}: #{$space}rem;
+          }
+        }
+      }
+
+      @else {
+        .m#{$selector} {
+          margin#{$property}: #{$space}rem;
+        }
+
+        .p#{$selector} {
+          padding#{$property}: #{$space}rem;
+        }
+      }
+    }
+  }
+}
