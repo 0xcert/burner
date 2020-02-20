@@ -1,0 +1,31 @@
+<template>
+  <div class="column">
+    <p>
+      This unique mechanism enables ZXC tokens to be controlled by the market
+      and <strong>not owned by anyone</strong>. The tokens are sent to the smart
+      contract, <strong>the sole owner</strong> of the ZXC smart contract, where
+      they get burned.
+    </p>
+    <p>
+      With the form bellow anyone can participate and permanently burn desired
+      amount of ZXC tokens from their wallet. This will
+      <strong>decrease a total token supply</strong> and consequently
+      <strong>increase the token value.</strong>
+    </p>
+    <n-link class="button primary big mt-2" to="/burning">Start burning</n-link>
+  </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style lang="scss" scoped>
+.column {
+  text-align: center;
+
+  @include breakpoint(medium) {
+    padding: 0 4rem;
+  }
+}
+</style>
