@@ -14,7 +14,7 @@
   --primary-lighter: #e7eafd;
   --white: #fff;
   --main-bg: #eceff1;
-  --alert: #ca6a6a;
+  --alert: #fe467a;
   --black: #121212;
   --dark: #2b2b2b;
   --grey: rgba(0, 0, 0, 0.6);
@@ -66,6 +66,12 @@ h1 {
   @include breakpoint(medium) {
     font-size: 42px;
   }
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 1rem;
 }
 
 a {

@@ -1,5 +1,11 @@
 <template>
   <div class="column">
+    <h1 class="text-center">
+      0xcert Burner
+    </h1>
+    <div class="subtitle text-center mb-3">
+      A dedicated mechanism for burning ZXC tokens.
+    </div>
     <p>
       This unique mechanism enables ZXC tokens to be controlled by the market
       and <strong>not owned by anyone</strong>. The tokens are sent to the smart
@@ -12,7 +18,7 @@
       <strong>decrease a total token supply</strong> and consequently
       <strong>increase the token value.</strong>
     </p>
-    <n-link class="button primary big mt-2" to="/burning">Start burning</n-link>
+    <n-link class="button primary big mt-2" to="/burner">Start burning</n-link>
   </div>
 </template>
 
