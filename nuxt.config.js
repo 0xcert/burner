@@ -26,7 +26,7 @@ export default {
     scss: ['./assets/_mixins.scss']
   },
   css: ['~/assets/_forms'],
-  plugins: [{ src: '~/plugins/vee-validate' }],
+  plugins: [{ src: '~/plugins/vee-validate' }, { src: '~/plugins/common' }],
   scrollToTop: true,
   pageTransition: 'fade',
   buildModules: [

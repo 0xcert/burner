@@ -151,14 +151,6 @@ export default {
     await this.connectMetamask()
   },
   methods: {
-    parseBalance(value) {
-      if (typeof value === 'string') {
-        value = parseInt(value)
-      }
-      const result = value / 10 ** 18
-      return result.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    },
-
     async connectMetamask() {
       try {
         this.provider = new MetamaskProvider()

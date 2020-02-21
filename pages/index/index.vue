@@ -18,7 +18,8 @@
       <strong>decrease a total token supply</strong> and consequently
       <strong>increase the token value.</strong>
     </p>
-    <n-link class="button primary big mt-2" to="/burner">Start burning</n-link>
+    <n-link class="button primary mt-2" to="/burner">Start burning</n-link>
+    <n-link class="button-text ml-1" to="/history">Burning history</n-link>
   </div>
 </template>
 
