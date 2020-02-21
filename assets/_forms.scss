@@ -129,6 +129,7 @@ select {
 
 .button {
   background: var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: var(--global-radius);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   color: #fff;
@@ -149,6 +150,11 @@ select {
     cursor: default;
     opacity: 0.5;
   }
+
+  &.secondary {
+    background-color: transparent;
+    border: 1px solid var(--white);
+  }
 }
 
 .button:enabled:hover {
@@ -156,18 +162,21 @@ select {
 }
 
 .button-text {
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--global-radius);
-  color: var(--primary-color);
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
+  display: inline-block;
   font-size: 14px;
-  font-weight: bold;
   letter-spacing: 0.08em;
-  padding: 1rem 1.5rem;
+  padding: 0.88rem 1.5rem;
   text-align: center;
+  text-decoration: none;
   text-transform: uppercase;
   transition: all var(--quick);
 
   &:hover {
-    background: var(--primary-lighter);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
   }
 }

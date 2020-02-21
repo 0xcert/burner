@@ -1,12 +1,8 @@
 <template>
   <div class="burning">
-    <img class="logo" src="/images/0xcert-burner.svg" alt="0xcert Burner" />
-    <h1 class="text-center">
-      0xcert Burner
-    </h1>
-    <div class="subtitle text-center mb-3">
-      A dedicated mechanism for burning ZXC tokens.
-    </div>
+    <n-link to="/">
+      <img class="logo" src="/images/0xcert-burner.svg" alt="0xcert Burner" />
+    </n-link>
     <nuxt-child />
   </div>
 </template>

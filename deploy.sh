@@ -2,7 +2,7 @@ set -e
 npm install
 npm run generate
 cd dist
-echo 'burner.0xcert.org' > CNAME
+echo 'burn.0xcert.org' > CNAME
 git init
 git add -A
 git commit -m "Deploy website"
