@@ -6,7 +6,7 @@
         <loader />
         <p>Loading burning history...</p>
       </div>
-      <div v-if="state === 'loaded'" key="loaded">
+      <div v-if="state === 'loaded' && history.length > 0" key="loaded">
         <div class="table">
           <div class="tr">
             <div class="th date">Date</div>
@@ -27,6 +27,10 @@
         <div class="text-center">
           <n-link class="button mt-2" to="/">Go back</n-link>
         </div>
+      </div>
+      <div v-if="state === 'loaded' && history.length < 1" class="text-center">
+        <p>There's no burning events recorded so far.</p>
+        <n-link class="button mt-2" to="/">Go back</n-link>
       </div>
       <div v-if="state === 'error'" key="error" class="text-center">
         <h2>Something went wrong</h2>
@@ -50,83 +54,16 @@ export default {
       headers: ['Date', 'Amount', 'transaction']
     }
   },
-  computed: {
-    response() {
-      return [
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        },
-        {
-          completedAt: '2020-02-12 at 16:03',
-          burner: '0x29be44537fcF8e02708Cd618C407C78bDe1e0Af0',
-          amount: 50000000000000000000,
-          txHash:
-            '0x1e5e37a792a01859148755c9d3ea880f76bc2ad37f0fee13776352e048056e43'
-        }
-      ]
-    }
-  },
   created() {
     this.fetchHistory()
   },
   methods: {
-    fetchHistory() {
+    async fetchHistory() {
       try {
-        const history = this.response
-        this.history = history
+        const data = await this.$axios
+          .get('/stats/burns')
+          .then((res) => res.data.data)
+        this.history = data
         this.state = 'loaded'
       } catch (error) {
         this.error = error

@@ -157,7 +157,7 @@ export default {
         await this.provider.enable()
         this.valueLedger = new ValueLedger(
           this.provider,
-          process.env.zxcAddress
+          process.env.ZXC_ADDRESS
         )
         this.accountId = this.provider.accountId
         this.balance =
@@ -176,7 +176,7 @@ export default {
       this.state = 'locking'
       const mutation = await this.valueLedger.approveValue(
         0,
-        process.env.burnAddress
+        process.env.BURN_ADDRESS
       )
       this.unlocked = true
       await mutation.complete()
@@ -192,13 +192,13 @@ export default {
         const isUnlocked = await this.valueLedger.isApprovedValue(
           this.parsedAmount,
           this.provider.accountId,
-          process.env.burnAddress
+          process.env.BURN_ADDRESS
         )
 
         if (!isUnlocked) {
           const mutation = await this.valueLedger.approveValue(
             this.parsedAmount,
-            process.env.burnAddress
+            process.env.BURN_ADDRESS
           )
           this.unlocked = true
           await mutation.complete()
@@ -217,7 +217,7 @@ export default {
         const inputTypes = ['uint256']
         const attrs = {
           from: this.accountId,
-          to: process.env.burnAddress,
+          to: process.env.BURN_ADDRESS,
           data:
             functionSignature +
             this.provider.encoder
