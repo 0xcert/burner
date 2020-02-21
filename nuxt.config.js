@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   mode: 'spa',
   head: {
@@ -30,6 +32,7 @@ export default {
   scrollToTop: true,
   pageTransition: 'fade',
   buildModules: [
+    '@nuxtjs/dotenv',
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
     [
@@ -39,12 +42,6 @@ export default {
       }
     ]
   ],
-  env: {
-    zxcAddress:
-      process.env.ZXC_ADDRESS || '0x62B33fA58AE6829712558B8f58aA644A537FBAda',
-    burnAddress:
-      process.env.BURN_ADDRESS || '0xcfc9d833648f2b5646a560494Bc79A97Fe59913a'
-  },
   eslint: {
     quiet: true,
     fix: true
@@ -58,7 +55,7 @@ export default {
     position: 'bottom-right',
     duration: 3000
   },
-  axios: {},
+  axios: { baseURL: process.env.BASE_API_URL },
   build: {
     extend(config, ctx) {
       config.node = { fs: 'empty' }
