@@ -15,9 +15,16 @@
           </div>
 
           <div v-for="burn in history" :key="burn.ref" class="tr">
-            <div class="td date" v-text="formatDate(burn.completedAt)" />
-            <div class="td amount">{{ parseBalance(burn.amount) }} ZXC</div>
+            <div class="td date">
+              <div class="xs-label">Date:</div>
+              {{ formatDate(burn.completedAt) }}
+            </div>
+            <div class="td amount">
+              <div class="xs-label">Amount:</div>
+              {{ parseBalance(burn.amount) }} ZXC
+            </div>
             <div class="td tx ellipsis">
+              <div class="xs-label">Transaction:</div>
               <a
                 target="_blank"
                 :href="`https://etherscan.io/tx/${burn.txHash}`"
@@ -99,7 +106,9 @@ export default {
   margin-top: 2rem;
 
   .tr {
-    display: flex;
+    @include breakpoint(medium) {
+      display: flex;
+    }
 
     &:nth-child(even) {
       background: rgba(0, 0, 0, 0.4);
@@ -109,16 +118,28 @@ export default {
   .td,
   .th {
     font-size: 16px;
-    padding: 10px;
+    padding: 5px 10px;
+
+    @include breakpoint(medium) {
+      padding: 10px;
+    }
   }
 
   .th {
     font-weight: 500;
+
+    @include breakpoint(small only) {
+      display: none;
+    }
   }
 
   .tx {
     flex-basis: 44%;
     justify-self: flex-end;
+
+    @include breakpoint(small only) {
+      width: calc(100vw - 2rem);
+    }
 
     a {
       text-decoration: none;
@@ -147,5 +168,10 @@ export default {
   &.tx {
     color: var(--primary-color);
   }
+}
+
+.xs-label {
+  color: var(--white);
+  font-weight: 500;
 }
 </style>
