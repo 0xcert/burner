@@ -50,8 +50,7 @@ export default {
     return {
       state: 'loading',
       history: null,
-      error: '',
-      headers: ['Date', 'Amount', 'transaction']
+      error: ''
     }
   },
   created() {
@@ -69,6 +68,11 @@ export default {
         this.error = error
         this.state = 'error'
       }
+    }
+  },
+  head() {
+    return {
+      title: '0xcert Burner - History'
     }
   }
 }
