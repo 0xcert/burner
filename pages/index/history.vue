@@ -15,10 +15,13 @@
           </div>
 
           <div v-for="burn in history" :key="burn.ref" class="tr">
-            <div class="td date" v-text="burn.completedAt" />
+            <div class="td date" v-text="formatDate(burn.completedAt)" />
             <div class="td amount">{{ parseBalance(burn.amount) }} ZXC</div>
             <div class="td tx ellipsis">
-              <a :href="`https://etherscan.io/tx/${burn.txHash}`">
+              <a
+                target="_blank"
+                :href="`https://etherscan.io/tx/${burn.txHash}`"
+              >
                 {{ burn.txHash }}
               </a>
             </div>
@@ -44,7 +47,9 @@
 </template>
 
 <script>
+import { format } from 'date-fns'
 import Loader from '~/components/Loader'
+
 export default {
   components: {
     Loader
@@ -60,6 +65,9 @@ export default {
     this.fetchHistory()
   },
   methods: {
+    formatDate(date) {
+      return format(new Date(date), "yyyy-MM-dd 'at' h:mm a")
+    },
     async fetchHistory() {
       try {
         const data = await this.$axios
@@ -111,6 +119,14 @@ export default {
   .tx {
     flex-basis: 44%;
     justify-self: flex-end;
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .date {
@@ -127,5 +143,9 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &.tx {
+    color: var(--primary-color);
+  }
 }
 </style>

@@ -1,8 +1,10 @@
 <template>
   <div class="burning">
-    <n-link to="/">
-      <img class="logo" src="/images/0xcert-burner.svg" alt="0xcert Burner" />
-    </n-link>
+    <div class="logo">
+      <n-link to="/" class="logo">
+        <img src="/images/0xcert-burner.svg" alt="0xcert Burner" />
+      </n-link>
+    </div>
     <nuxt-child />
   </div>
 </template>
@@ -18,7 +20,7 @@ export default {}
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 </style>
