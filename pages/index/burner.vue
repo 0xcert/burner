@@ -69,7 +69,7 @@
             Let them burn
           </button>
 
-          <n-link class="button-text ml-1" to="/">
+          <n-link class="button-text" to="/">
             Not today
           </n-link>
         </ValidationObserver>
