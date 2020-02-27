@@ -8,9 +8,11 @@
     </div>
     <p>
       This unique mechanism enables ZXC tokens to be controlled by the market
-      and <strong>not owned by anyone</strong>. The tokens are sent to the smart
-      contract, <strong>the sole owner</strong> of the ZXC smart contract, where
-      they get burned.
+      and <strong>not owned by anyone</strong>. The tokens are sent to a
+      <a target="_blank" :href="`https://etherscan.io/address/${burnAddress}`"
+        >burn smart contract</a
+      >, <strong>the sole owner</strong> of the ZXC smart contract, where they
+      get burned.
     </p>
     <p>
       With the form bellow anyone can participate and permanently burn a desired
@@ -25,6 +27,11 @@
 
 <script>
 export default {
+  computed: {
+    burnAddress() {
+      return process.env.BURN_ADDRESS
+    }
+  },
   head() {
     return {
       title: '0xcert Burner'

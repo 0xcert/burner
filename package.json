@@ -17,6 +17,7 @@
     "@0xcert/ethereum-value-ledger": "^2.0.0-beta4",
     "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/toast": "^3.3.0",
+    "date-fns": "^2.10.0",
     "nuxt": "^2.11.0",
     "vee-validate": "^3.2.5"
   },
