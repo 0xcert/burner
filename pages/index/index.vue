@@ -13,10 +13,10 @@
       they get burned.
     </p>
     <p>
-      With the form bellow anyone can participate and permanently burn desired
+      With the form bellow anyone can participate and permanently burn a desired
       amount of ZXC tokens from their wallet. This will
-      <strong>decrease a total token supply</strong> and consequently
-      <strong>increase the token value.</strong>
+      <strong>decrease the total token supply</strong> and consequently
+      <strong>increase the scarcity.</strong>
     </p>
     <n-link class="button primary mt-2" to="/burner">Start burning</n-link>
     <n-link class="button-text ml-1" to="/history">Burning history</n-link>
@@ -24,7 +24,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head() {
+    return {
+      title: '0xcert Burner'
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

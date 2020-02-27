@@ -125,6 +125,7 @@ export default {
   },
   data() {
     return {
+      title: 'Prepare for burn',
       state: 'loading',
       loading: false,
       provider: null,
@@ -166,6 +167,7 @@ export default {
         this.unlocked = false
         this.confirmed = false
         this.state = 'ready'
+        this.title = 'Prepare for burn'
       } catch (error) {
         this.error = error
         this.state = 'error'
@@ -174,6 +176,7 @@ export default {
 
     async resetApproval() {
       this.state = 'locking'
+      this.title = 'Locking tokens...'
       const mutation = await this.valueLedger.approveValue(
         0,
         process.env.BURN_ADDRESS
@@ -189,6 +192,7 @@ export default {
           return
         }
         this.state = 'approving'
+        this.title = 'Approving tokens...'
         const isUnlocked = await this.valueLedger.isApprovedValue(
           this.parsedAmount,
           this.provider.accountId,
@@ -213,6 +217,7 @@ export default {
     async burnTokens() {
       try {
         this.state = 'burning'
+        this.title = 'Burning tokens...'
         const functionSignature = '0x42966c68' // burn
         const inputTypes = ['uint256']
         const attrs = {
@@ -232,10 +237,16 @@ export default {
         const mutation = new Mutation(this.provider, res.result)
         await mutation.complete()
         this.state = 'complete'
+        this.title = 'Burning complete!'
       } catch (error) {
         this.error = error
         this.state = 'error'
       }
+    }
+  },
+  head() {
+    return {
+      title: this.title
     }
   }
 }
