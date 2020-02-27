@@ -33,8 +33,11 @@
         <n-link class="button mt-2" to="/">Go back</n-link>
       </div>
       <div v-if="state === 'error'" key="error" class="text-center">
-        <h2>Something went wrong</h2>
+        <p>Something went wrong.</p>
         <p>{{ error }}</p>
+        <div class="text-center">
+          <n-link class="button mt-2" to="/">Go back</n-link>
+        </div>
       </div>
     </transition>
   </div>
@@ -64,8 +67,13 @@ export default {
           .then((res) => res.data.data)
         this.history = data
         this.state = 'loaded'
-      } catch (error) {
-        this.error = error
+      } catch (err) {
+        err.response.data.errors.forEach((err) => {
+          const error = err.message
+            ? err.message
+            : `Error with code ${err.code} ocurred.`
+          this.error = error
+        })
         this.state = 'error'
       }
     }
