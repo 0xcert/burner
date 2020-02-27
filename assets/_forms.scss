@@ -134,7 +134,7 @@ select {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   color: #fff;
   cursor: pointer;
-  display: inline-block;
+  display: block;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.08em;
@@ -145,6 +145,14 @@ select {
   text-decoration: none;
   text-transform: uppercase;
   transition: all var(--quick);
+
+  @include breakpoint(small only) {
+    width: 100%;
+  }
+
+  @include breakpoint(medium) {
+    display: inline-block;
+  }
 
   &:disabled {
     cursor: default;
@@ -166,14 +174,20 @@ select {
   border-radius: var(--global-radius);
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  display: inline-block;
+  display: block;
   font-size: 14px;
   letter-spacing: 0.08em;
+  margin-top: 1rem;
   padding: 0.88rem 1.5rem;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   transition: all var(--quick);
+
+  @include breakpoint(medium) {
+    display: inline-block;
+    margin-left: 1rem;
+  }
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
