@@ -173,5 +173,9 @@ export default {
 .xs-label {
   color: var(--white);
   font-weight: 500;
+
+  @include breakpoint(medium) {
+    display: none;
+  }
 }
 </style>
