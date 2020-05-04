@@ -47,7 +47,6 @@
             :rules="{
               required: true,
               balance: balance,
-              integer: true,
               min_value: 1
             }"
             name="amount"
