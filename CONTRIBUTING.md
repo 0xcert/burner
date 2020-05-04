@@ -23,6 +23,13 @@ $ npm run dev
 
 Run the deploy script which will build and push source code to the Github pages.
 
+Env for production:
+```
+ZXC_ADDRESS=0x83e2be8d114f9661221384b3a50d24b96a5653f5
+BURN_ADDRESS=0x033BBe355FF37e57F93Ca06c3CA20BCd0e95ab04
+BASE_API_URL=https://api.0xcert.org
+```
+
 ```
 $ ./deploy.sh
 ```
